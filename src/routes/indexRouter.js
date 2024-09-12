@@ -16,7 +16,7 @@ router.get('/productos/lista', productController.listProducts);
 router.put('/productos/actualizar/:id', productController.updateProduct);
 
 // Ruta para eliminar un producto por ID
-router.delete('/productos/eliminar/:id', productController.deleteProducto);
+router.delete('/productos/eliminar/:id', productController.deleteProduct);
 
 // Ruta para mostrar detalles de un producto por ID
 router.get('/productos/detalle/:id', productController.productDetails);
