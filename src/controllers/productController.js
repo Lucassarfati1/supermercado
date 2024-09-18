@@ -106,7 +106,8 @@ const productController = {
 
     home: (req,res) => {
         //res.render(dataBaseProducts, { product });
-        res.render('index.ejs', { products : dataBaseProducts});
+        const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        res.render('index.ejs', { products: dataBaseProducts, toThousand });
     }
 
 
