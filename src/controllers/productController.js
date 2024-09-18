@@ -4,6 +4,10 @@ const fs = require('fs');
 const path = require('path');
 const { stringify } = require('querystring');
 
+
+
+
+
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const dataBaseProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
@@ -97,15 +101,16 @@ const productController = {
         const idProduct = parseInt(req.params.id);
         const detailProduct = dataBaseProducts.find(product => product.id === idProduct);
         //res.render("getDetailsProduct", {detailProduct});
-        res.send("Detalle del producto: "+ detailProduct.name + " <br> description: "+ detailProduct.description);
+        res.render("../views/detail", { detailProduct } );
     },
 
     home: (req,res) => {
-
-
         //res.render(dataBaseProducts, { product });
-    res.send("this is our home");
+        res.render('index.ejs', { products : dataBaseProducts});
     }
+
+
+   
 
 }
 module.exports = productController;

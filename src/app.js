@@ -2,6 +2,14 @@ const express = require('express');
 
 const app = express();
 
+const path = require('path');
+
+app.set('views', path.join(__dirname, 'views'));
+
+app.set("view engine", "ejs");
+
+app.use(express.static(path.join(__dirname, '../public')));
+
 //express.json(): Permite que Express procese el cuerpo de las solicitudes que contienen JSON.
 app.use(express.json());
 
@@ -17,6 +25,6 @@ app.listen(8080, ()=> {
 
 app.use("/", router);
 
-///app.set("view engine", "ejs");
+
 
 //app.use(router);
