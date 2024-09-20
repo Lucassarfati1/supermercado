@@ -10,7 +10,7 @@ router.get('/', productController.home);
 router.post('/productos/crear', productController.createProduct);
 
 // Ruta para listar todos los productos
-router.get('/productos/lista', productController.listProducts);
+router.get('/productos', productController.listProducts);
 
 // Ruta para actualizar un producto por ID
 router.put('/productos/actualizar/:id', productController.updateProduct);

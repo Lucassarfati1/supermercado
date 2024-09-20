@@ -51,7 +51,7 @@ const productController = {
     listProducts : (req,res) => {
        
        // res.render('BaseDatosEjs', {dataBaseProducts});
-      res.send(dataBaseProducts);
+      res.render("products", {products : dataBaseProducts, toThousand});
     },
 
     updateProduct : (req,res) => {
@@ -100,8 +100,9 @@ const productController = {
     productDetails: (req,res) => {
         const idProduct = parseInt(req.params.id);
         const detailProduct = dataBaseProducts.find(product => product.id === idProduct);
+        console.log(detailProduct);
         //res.render("getDetailsProduct", {detailProduct});
-        res.render("../views/detail", { detailProduct } );
+        res.render("../views/detail", { detailProduct, toThousand } );
     },
 
     home: (req,res) => {
@@ -109,9 +110,5 @@ const productController = {
         const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         res.render('index.ejs', { products: dataBaseProducts, toThousand });
     }
-
-
-   
-
 }
 module.exports = productController;

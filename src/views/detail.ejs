@@ -11,31 +11,34 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Detalle del producto: <%= detailProduct.name %></h2>
+				<h2 class="products-title">Detalle del producto: <%= detailProduct.name %> </h2>
 			</div>
 		</div>
 		<div class="product-detail">
 			<div class="row">
 				<div class="col-12 col-lg-8">
-					<img src="/images/products/¿?" alt="product image" class="product-detail-img">
+					<img src="/images/products/<%= detailProduct.image %>" alt="product image" class="product-detail-img">
 					<p class="product-detail-description">
-						PRODUCT DESCRIPTION
+						<%= detailProduct.description %>
 					</p>
 				</div>
 				<div class="col-12 col-lg-4">
 					<article class="product-detail-info">
-						<h2 class="product-detail-title">PRODUCT NAME</h2>
+						<h2 class="product-detail-title"><%= detailProduct.name %></h2>
 						
 							<p class="product-detail-price small">
-								<span>$PRICE</span>
-								/
-								<b>DISCOUNT% OFF</b>
+								<span><%= detailProduct.price %></span>
+								
+								
+								<% if(detailProduct.discount > 0){ %> 
+							<span>DISCOUNT % OFF <%=  detailProduct.discount %></span>
+							<% } %>
 							</p>
 							<p class="product-detail-price">
-								$FINAL PRICE
+								Final Price: $<%= toThousand(detailProduct.price - (detailProduct.price * (detailProduct.discount / 100))) %>
 							</p>
 							<p class="product-detail-price">
-								$PRICE
+								Price: $<%= detailProduct.price %>
 							</p>
 
 						<ul class="actions-list">
