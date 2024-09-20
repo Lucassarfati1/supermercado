@@ -25,7 +25,7 @@
 						<% if(product.category === "visited"){   %>
 						<div class="col-12 col-sm-6 col-lg-3">
 						<section class="product-box">
-							<a href="/productos/detalle/<%= product.id %>">
+							<a href="/products/detail/<%= product.id %>">
 							<figure class="product-box_image">
 								<img src="/images/products/<%= product.image %>" alt="Imagen del producto">
 							</figure>
@@ -67,7 +67,7 @@
 			<!-- Show the "in-sale" products -->
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/products/detail/bicicleta">
+					<a href="/products/detail/<%= product.id %>">
 					<figure class="product-box_image">
 						<img src="/images/products/<%= product.image %>" alt="Imagen del producto">
 					</figure>

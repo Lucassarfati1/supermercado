@@ -142,5 +142,11 @@
     "category": "in-sale",
     "description": "Deja que la música dance cobre vida con EXTRA BASS™ Anima el ambiente con EXTRA BASS™1. Un radiador pasivo trabaja con el parlante monoaural para potenciar los tonos bajos y mejorar los graves, a pesar del tamaño compacto. ",
     "image": "img-parlante-sony.jpg"
-  } 
+  },
+  {
+    "name": "oreo",
+    "price": "1000",
+    "description": "Galletitas oreo 122 gramos",
+    "discount": "10"
+  }
 ]

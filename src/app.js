@@ -19,6 +19,10 @@ app.use(express.urlencoded({ extended : false }));
 
 const router = require('./routes/indexRouter');
 
+const methodOverride = require('method-override');
+
+app.use(methodOverride("_method")); 
+
 app.listen(8080, ()=> {
     console.log("server abierto");
 });

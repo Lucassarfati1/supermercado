@@ -15,6 +15,12 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const productController = {
 
+    showFormCreate : (req,res) => {
+
+        res.render('product-create-form');
+    },
+
+
     createProduct : (req,res) => {
         
         const name = req.body.name;
@@ -52,6 +58,12 @@ const productController = {
        
        // res.render('BaseDatosEjs', {dataBaseProducts});
       res.render("products", {products : dataBaseProducts, toThousand});
+    },
+
+    showFormEdit : (req,res) => {
+        const idProductUpdate = parseInt(req.params.id);
+        let product = dataBaseProducts[idProductUpdate];
+        res.render('product-edit-form', {product});
     },
 
     updateProduct : (req,res) => {
