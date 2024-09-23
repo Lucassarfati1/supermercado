@@ -26,9 +26,9 @@
 						</figure>
 
 						<article class="product-box_data">
-							<h2>$PRECIO FINAL</h2>
+							<h2>Precio: $<%= toThousand(product.price) %></h2>
 							<% if(product.discount > 0){ %> 
-		<span>DISCOUNT % OFF <%=  toThousand(product.price - (product.price * (product.discount / 100))) %></span>
+		<span>WITH DISCOUNT <%= product.discount %> % OFF: Precio Final $<%=  toThousand(product.price - (product.price * (product.discount / 100))) %></span>
 							<p><%= product.name %></p>
 							<i class="fas fa-truck"></i>
 									<% }%>

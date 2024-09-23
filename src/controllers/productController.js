@@ -24,14 +24,14 @@ const productController = {
     createProduct : (req,res) => {
         
         const name = req.body.name;
-        const img = req.body.image;
+      //  const img = req.body.image;
         const price = req.body.price;
         const description = req.body.description;
         const discount = req.body.discount;
 
         const producto = {
             "name": name,
-            "image": img,
+            //"image": img,
             "price": price,
             "description" : description,
             "discount" : discount
@@ -69,7 +69,7 @@ const productController = {
     updateProduct : (req,res) => {
         const idProductUpdate = parseInt(req.params.id);
         const name = req.body.name;
-        const img = req.body.img;
+       // const img = req.body.img;
         const price = req.body.price;
         const description = req.body.description;
         const discount = req.body.discount;
@@ -80,7 +80,7 @@ const productController = {
         const productUpdated = {
             "id": idProductUpdate,
             "name": name,
-            "image": img,
+         //   "image": img,
             "price": price,
             "description": description,
             "discount" : discount,
@@ -89,7 +89,7 @@ const productController = {
 
         dataBaseProducts[idProductUpdate - 1] = productUpdated;
 
-        const mostrarProducto = stringify(dataBaseProducts[idProductUpdate]);
+        const mostrarProducto = stringify(dataBaseProducts[idProductUpdate - 1]);
 
        // res.render("" + productUpdated.name);
         res.send("Producto actualizado exitadamente "+"<br> "+ mostrarProducto);

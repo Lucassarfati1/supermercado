@@ -38,7 +38,7 @@
 								Final Price: $<%= toThousand(detailProduct.price - (detailProduct.price * (detailProduct.discount / 100))) %>
 							</p>
 							<p class="product-detail-price">
-								Price: $<%= detailProduct.price %>
+								Price: $<%= toThousand(detailProduct.price) %>
 							</p>
 
 						<ul class="actions-list">

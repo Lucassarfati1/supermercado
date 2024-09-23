@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const multer= require('multer');
 const productController = require('../controllers/productController');
 
 //home 2 listados, productos recientes visitados, productos en descuento
