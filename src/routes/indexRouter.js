@@ -17,6 +17,8 @@ const storage = multer.diskStorage({
   }
 });
 
+const upload = multer({storage});
+
 
 //home 2 listados, productos recientes visitados, productos en descuento
 
