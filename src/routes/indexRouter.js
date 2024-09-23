@@ -4,6 +4,9 @@ const multer= require('multer');
 const path = require('path');
 const productController = require('../controllers/productController');
 
+// Constante para aplicar la libreria multer, relacionamos el path de destino donde se van a guardar las imgenes en local
+// tambien declaramos el metodo donde va designar el nombre de cada imagen.
+
 const storage = multer.diskStorage({
   destination: (req, res, cb) => {
     cb(null, path.join(__dirname,'./public/images/products'));
