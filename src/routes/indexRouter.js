@@ -1,7 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const multer= require('multer');
+const path = require('path');
 const productController = require('../controllers/productController');
+
+const storage = multer.diskStorage({
+  destination: (req, res, cb) => {
+    cb(null, path.join(__dirname,'./public/images/products'));
+  },
+  filename: (req,res,cb) => {
+    const newFileName=  'imgProduct'+date.now()+path.extname(file.originalname);
+    cb(null, newFilename);
+  }
+});
+
 
 //home 2 listados, productos recientes visitados, productos en descuento
 
