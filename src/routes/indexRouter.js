@@ -4,16 +4,18 @@ const multer= require('multer');
 const path = require('path');
 const productController = require('../controllers/productController');
 
+
+
 // Constante para aplicar la libreria multer, relacionamos el path de destino donde se van a guardar las imgenes en local
 // tambien declaramos el metodo donde va designar el nombre de cada imagen.
 
 const storage = multer.diskStorage({
-  destination: (req, res, cb) => {
-    cb(null, path.join(__dirname,'./public/images/products'));
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname,'../../'));
   },
-  filename: (req,res,cb) => {
-    const newFileName=  'imgProduct'+date.now()+path.extname(file.originalname);
-    cb(null, newFilename);
+  filename: (req,file,cb) => {
+    const newFileName =  'imgProduct- ' + Date.now() + path.extname(file.originalname);
+    cb(null, newFileName);
   }
 });
 
@@ -28,7 +30,7 @@ router.get('/', productController.home);
 router.get('/products/create', productController.showFormCreate);
 
 //Ruta para mandar formulario de crear producto
-router.post('/products/',productController.createProduct);
+router.post('/products/', upload.single('img'), productController.createProduct);
 
 // Ruta para listar todos los productos
 router.get('/products', productController.listProducts);
@@ -37,7 +39,7 @@ router.get('/products', productController.listProducts);
 router.get('/products/edit/:id', productController.showFormEdit);
 
 // Ruta para actualizar un producto por ID
-router.put('/products/:id', productController.updateProduct);
+router.put('/products/:id', upload.single('img'),  productController.updateProduct);
 
 // Ruta para eliminar un producto por ID
 router.delete('/products/:id', productController.deleteProduct);

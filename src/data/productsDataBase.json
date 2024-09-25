@@ -81,15 +81,6 @@
     "category": "visited"
   },
   {
-    "id": 10,
-    "name": "Mouse Inalámbrico Logitech M280",
-    "description": "Uso más cómodo para la mano derecha gracias a la forma contorneada con recubrimiento de goma blanda. Duración de las pilas hasta 18 meses, gracias al diseño para ahorrar energía.El M280 entra automáticamente en estado de suspensión cuando no se está usando.",
-    "price": 1200,
-    "discount": 10,
-    "image": "img-mouse-logitech.jpg",
-    "category": "visited"
-  },
-  {
     "id": 11,
     "name": "Parlante Inalámbrico Bose Soundtouch 10",
     "description": "Parlante Inalámbrico Bose Soundtouch 10. SoundTouch®.La manera más sencilla de reproducir música en todo su hogar de forma inalámbrica. Características. » Marca: Bose. » Modelo: SoundTouch. » Color: Negro",
@@ -148,5 +139,27 @@
     "price": "1000",
     "description": "Galletitas oreo 122 gramos",
     "discount": "10"
+  },
+  {
+    "name": "Mate",
+    "price": "8000",
+    "description": "Mate de metal",
+    "discount": "10"
+  },
+  {
+    "price": null,
+    "discount": null
+  },
+  {
+    "price": null,
+    "discount": null
+  },
+  {
+    "price": null,
+    "discount": null
+  },
+  {
+    "price": null,
+    "discount": null
   }
 ]

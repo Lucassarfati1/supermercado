@@ -24,20 +24,21 @@ const productController = {
     createProduct : (req,res) => {
         
         const name = req.body.name;
-      //  const img = req.body.image;
-        const price = req.body.price;
+        const img = req.body.img;
         const description = req.body.description;
-        const discount = req.body.discount;
+        const price = parseInt(req.body.price);
+        const discount = parseInt(req.body.discount);
 
         const producto = {
+            
             "name": name,
-            //"image": img,
+            "image": img,
             "price": price,
             "description" : description,
             "discount" : discount
             
         }
-
+        console.log( producto);
         dataBaseProducts.push(producto);
 
         // Sobrescribir el archivo JSON con el nuevo producto agregado
@@ -62,25 +63,25 @@ const productController = {
 
     showFormEdit : (req,res) => {
         const idProductUpdate = parseInt(req.params.id);
-        let product = dataBaseProducts[idProductUpdate];
+        let product = dataBaseProducts[idProductUpdate - 1];
         res.render('product-edit-form', {product});
     },
 
     updateProduct : (req,res) => {
         const idProductUpdate = parseInt(req.params.id);
         const name = req.body.name;
-       // const img = req.body.img;
-        const price = req.body.price;
+        const img = req.body.img;
         const description = req.body.description;
-        const discount = req.body.discount;
+        const price = parseFloat(req.body.price);
+        const discount = parseFloat(req.body.discount);
         const category = req.body.category;
 
          //let productUpdate = dataBaseProducts.find(product => product.id === idProductUpdate);
-
+        console.log(idProductUpdate+" "+name+" "+img+" "+description+" ");
         const productUpdated = {
             "id": idProductUpdate,
             "name": name,
-         //   "image": img,
+            "image": img,
             "price": price,
             "description": description,
             "discount" : discount,
