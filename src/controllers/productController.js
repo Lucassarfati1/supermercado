@@ -6,7 +6,9 @@ const { stringify } = require('querystring');
 
 
 
-
+const escribirJson = (dataBase) => {
+    fs.writeFileSync(productsFilePath, JSON.stringify(dataBase, null, 2), 'utf-8');
+}
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const dataBaseProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -23,36 +25,36 @@ const productController = {
 
     createProduct : (req,res) => {
         
+        const id = dataBaseProducts.length + 1; 
+        const category = req.body.category;
         const name = req.body.name;
-        const img = req.body.img;
+        const img = req.file.filename;
         const description = req.body.description;
         const price = parseInt(req.body.price);
         const discount = parseInt(req.body.discount);
-
+        console.log("El valor de imagen"+img);
         const producto = {
-            
+            "id": id,
             "name": name,
             "image": img,
             "price": price,
             "description" : description,
-            "discount" : discount
+            "discount" : discount,
+            "category":category
             
         }
         console.log( producto);
         dataBaseProducts.push(producto);
 
+        escribirJson(dataBaseProducts);
+
         // Sobrescribir el archivo JSON con el nuevo producto agregado
-        fs.writeFileSync(productsFilePath, JSON.stringify(dataBaseProducts, null, 2), 'utf-8');
+        //fs.writeFileSync(productsFilePath, JSON.stringify(dataBaseProducts, null, 2), 'utf-8');
 
-        res.status(200).send('Producto creado: <br>' 
-            + "name: " + producto.name 
-            + "<br>" 
-            + "description: "+ producto.description
-            + "discount: " + producto.discount
-        );
-
+        // Redirige a la página home con un mensaje flash o una query
+        res.redirect('/?msg=productoCreado');
       //  res.render('../views/productoInsertado.ejs');
-        res.send("Se ha creado el producto exitadamente");
+        //res.send("Se ha creado el producto exitadamente");
     },
 
     listProducts : (req,res) => {
@@ -69,12 +71,13 @@ const productController = {
 
     updateProduct : (req,res) => {
         const idProductUpdate = parseInt(req.params.id);
-        const name = req.body.name;
-        const img = req.body.img;
+        const name = req.body.name;     
         const description = req.body.description;
         const price = parseFloat(req.body.price);
         const discount = parseFloat(req.body.discount);
         const category = req.body.category;
+        
+        let img = req.file ? req.file.filename : dataBaseProducts[idProductUpdate - 1].image;
 
          //let productUpdate = dataBaseProducts.find(product => product.id === idProductUpdate);
         console.log(idProductUpdate+" "+name+" "+img+" "+description+" ");
@@ -92,8 +95,11 @@ const productController = {
 
         const mostrarProducto = stringify(dataBaseProducts[idProductUpdate - 1]);
 
+        fs.writeFileSync(productsFilePath, JSON.stringify(dataBaseProducts, null, 2), 'utf-8');
+
+        console.log(category+" "+price+" "+name+" "+img+" "+description+" ");
        // res.render("" + productUpdated.name);
-        res.send("Producto actualizado exitadamente "+"<br> "+ mostrarProducto);
+        res.send("Producto actualizado exitadamente "+"<br> ");
     },
 
     deleteProduct : (req,res) => {
@@ -124,4 +130,6 @@ const productController = {
         res.render('index.ejs', { products: dataBaseProducts, toThousand });
     }
 }
+
+
 module.exports = productController;

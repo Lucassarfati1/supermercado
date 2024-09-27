@@ -29,10 +29,10 @@
   {
     "id": 4,
     "name": "Heladera no frost Whirlpool WRM45A",
+    "image": "imgProduct-1727444611130.jpg",
+    "price": 3000,
     "description": "Disfrutá de la frescura de tus alimentos y almacenalos de manera práctica y cómoda en tu heladera Whirlpool, la protagonista de tu cocina. Su sistema no frost evita la generación de escarcha y te permitirá conservar el sabor y las propiedades nutritivas de los productos.A su vez, su freezer cuenta con una capacidad de 86 litros, que facilitará la distribución y el orden de tus congelados para que no te preocupes por la falta de espacio.",
-    "price": 47900,
     "discount": 10,
-    "image": "img-heladera-whirpool.jpg",
     "category": "in-sale"
   },
   {
@@ -100,66 +100,38 @@
   },
   {
     "id": 13,
-    "name": "Smart TV Samsung 4K 50",
-    "description": "Con el Smart TV Samsung UN50MU6100, viví una nueva experiencia visual con la resolución 4K, que te presentará imágenes con gran detalle y de alta calidad. Ahora todo lo que veas cobrará vida con brillo y colores más reales. Gracias a su tamaño de 50\", podrás transformar tu espacio en una sala de cine y transportarte a donde quieras.",
-    "price": 34990,
-    "discount": 0,
-    "image": "img-tv-samsung-smart.jpg",
+    "name": "tenedor",
+    "image": "imgProduct-1727442460108.jpg",
+    "price": 2000,
+    "description": "Un tenedor que agarra la comida ",
+    "discount": 10,
+    "category": "visited"
+  },
+  {
+    "id": 13,
+    "name": "Teclado Mecanico",
+    "image": "imgProduct-1727443442497.jpg",
+    "price": 12000,
+    "description": "Teclado Mecanico Buenisimo",
+    "discount": 10,
     "category": "visited"
   },
   {
     "id": 14,
-    "name": "Sony S6700 Reproductor De Blu-ray ",
-    "description": "Disfruta de tus películas favoritas con hasta cuatro veces más detalles que Full HD, gracias a la conversión de señales 4K. Cuando se conecta a un televisor compatible,un procesador de video avanzado convierte el video estándar en una señal cercana a la resolución 4K (3840 x 2160). Con ocho millones de píxeles, obtendrás imágenes más nítidas y detalladas, y la mayor calidad de la image te permite sentarte más cerca de la pantalla para que te sientas como en el cine.",
-    "price": 10999,
-    "discount": 5,
-    "image": "img-sony-blueray.jpg",
-    "category": "visited"
+    "name": "Playstation 5",
+    "image": "imgProduct-1727445290996.jpg",
+    "price": 100000,
+    "description": "Una consola muy buena ",
+    "discount": 20,
+    "category": "in-sale"
   },
   {
     "id": 15,
-    "name": "Bicicleta Mountain Bike Fierce Rodado 29",
-    "description": "Bicicleta Mountain Bike Fierce Rodado 29 21 velocidades. Tipo: Mountain Bike. Rodado: 29. Material Cuadro: Aluminio. Talle: 18. Suspensión: Delantera. Velocidades: 21 - Shimano. Sistema de Freno: Disco Mecánico. Llantas: Doble pared.",
-    "price": 15979,
-    "discount": 12,
-    "image": "img-bicicleta-fierce.jpg",
+    "name": "Playstation1",
+    "image": "imgProduct-1727444528900.jpg",
+    "price": 500000,
+    "description": "La primera play",
+    "discount": 16,
     "category": "visited"
-  },
-  {
-    "id": 16,
-    "name": "Sony Srs-xb12 Parlante Bluetooth Portátil",
-    "price": 4699,
-    "discount": 5,
-    "category": "in-sale",
-    "description": "Deja que la música dance cobre vida con EXTRA BASS™ Anima el ambiente con EXTRA BASS™1. Un radiador pasivo trabaja con el parlante monoaural para potenciar los tonos bajos y mejorar los graves, a pesar del tamaño compacto. ",
-    "image": "img-parlante-sony.jpg"
-  },
-  {
-    "name": "oreo",
-    "price": "1000",
-    "description": "Galletitas oreo 122 gramos",
-    "discount": "10"
-  },
-  {
-    "name": "Mate",
-    "price": "8000",
-    "description": "Mate de metal",
-    "discount": "10"
-  },
-  {
-    "price": null,
-    "discount": null
-  },
-  {
-    "price": null,
-    "discount": null
-  },
-  {
-    "price": null,
-    "discount": null
-  },
-  {
-    "price": null,
-    "discount": null
   }
 ]
