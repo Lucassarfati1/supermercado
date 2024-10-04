@@ -1,5 +1,7 @@
 const express = require('express');
 
+const {chek,validationResult,body} = require('express-validator');
+
 const app = express();
 
 const path = require('path');

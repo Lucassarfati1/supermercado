@@ -3,6 +3,7 @@ const router = express.Router();
 const multer= require('multer');
 const path = require('path');
 const productController = require('../controllers/productController');
+const {chek,validationResult,body} = require('express-validator');
 
 
 
@@ -21,6 +22,37 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage});
 
+const validationsCreate = [
+  body('name').notEmpty().withMessage('Tienes que ingresar un nombre'),
+  body('category').notEmpty().withMessage('Tienes que ingresar una categoria'),
+  body('price')
+  .notEmpty().withMessage('NO PODES DEJAR ESTO VACIO LOCO').bail()
+  .isNumeric().withMessage('Tienes que ingresar un numero'),
+  body('discount')
+  .notEmpty().withMessage('NO PODES DEJAR ESTO VACIO LOCO').bail()
+  .isNumeric().withMessage('Tienes que ingresar un numero'),
+  body('description').notEmpty().withMessage('Tienes que ingresar una descripcion'),
+  body('img').custom((value, {req}) => {
+      let file = req.file;
+      let acceptedExtensions = ['.jpg', '.gif', '.png'];
+      let fileExtension = path.extname(file.originalname);
+      if(!file){
+        throw new Error('Tienes que ingresar una imagen');
+      }else{
+        if(!acceptedExtensions.includes(fileExtension)){
+          throw new Error('Las extensiones de archivo permitidas son ${acceptedExtensions.join(",")}');
+        }
+      }
+
+      return true;
+
+  })
+]
+
+const validationsEdit = [
+  body('name').notEmpty().withMessage('Tienes que ingresar un nombre'),
+  body('description').notEmpty().withMessage('Tienes que ingresar una descripcion')
+]
 
 //home 2 listados, productos recientes visitados, productos en descuento
 
@@ -29,14 +61,14 @@ router.get('/', productController.home);
 // Ruta para crear un producto
 router.get('/products/create', productController.showFormCreate);
 
-//Ruta para mandar formulario de crear producto
-router.post('/products/', upload.single('img'), productController.createProduct);
+//Ruta para mandar formulario de crear producto -----EXPRESS VALIDATOR PARA ESTE FORM
+router.post('/products/', upload.single('img'), validationsCreate, productController.createProduct);
 
 // Ruta para listar todos los productos
 router.get('/products', productController.listProducts);
 
-//Ruta para mostrar el formulario de edicion
-router.get('/products/edit/:id', productController.showFormEdit);
+//Ruta para mostrar el formulario de edicion ----------- EXPRESS VALIDATOR PARA ESTE FORM
+router.get('/products/edit/:id', validationsEdit, productController.showFormEdit);
 
 // Ruta para actualizar un producto por ID
 router.put('/products/:id', upload.single('img'),  productController.updateProduct);

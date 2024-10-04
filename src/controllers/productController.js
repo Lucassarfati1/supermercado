@@ -1,5 +1,5 @@
 const express = require('express');
-
+const {validationResult} = require('express-validator');
 const fs = require('fs');
 const path = require('path');
 const { stringify } = require('querystring');
@@ -18,13 +18,33 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const productController = {
 
     showFormCreate : (req,res) => {
+        const resultValidation = validationResult(req);
+        if(resultValidation.errors.length > 0){
+            res.render('product-create-form', {
+                errors:resultValidation.mapped(),
+                oldData:req.body
+            });
+        
+        }else{
+            res.render('product-create-form');
+        }
 
-        res.render('product-create-form');
     },
 
 
     createProduct : (req,res) => {
         
+        const resultValidation = validationResult(req);
+
+        // Si tiene errores, retorna la misma vista pero pasando el objeto de errores
+
+        if(resultValidation.errors.length > 0){
+            res.render('product-create-form', {
+                errors:resultValidation.mapped(),
+                oldData:req.body
+            });
+        }else{
+            
         const id = dataBaseProducts.length + 1; 
         const category = req.body.category;
         const name = req.body.name;
@@ -44,6 +64,7 @@ const productController = {
             
         }
         console.log( producto);
+
         dataBaseProducts.push(producto);
 
         escribirJson(dataBaseProducts);
@@ -55,6 +76,8 @@ const productController = {
         res.redirect('/?msg=productoCreado');
       //  res.render('../views/productoInsertado.ejs');
         //res.send("Se ha creado el producto exitadamente");
+        }
+
     },
 
     listProducts : (req,res) => {
