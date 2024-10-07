@@ -133,5 +133,23 @@
     "description": "La primera play",
     "discount": 16,
     "category": "visited"
+  },
+  {
+    "id": 16,
+    "name": "",
+    "image": "imgProduct-1728046759949.jpg",
+    "price": 40000,
+    "description": " Un mueble muy fachero",
+    "discount": 30,
+    "category": " in-sale "
+  },
+  {
+    "id": 17,
+    "name": "  ",
+    "image": "imgProduct-1728046975050.jpg",
+    "price": 30000,
+    "description": "Una bañera comoda ",
+    "discount": 10,
+    "category": " in-sale "
   }
 ]

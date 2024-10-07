@@ -1,5 +1,5 @@
 const express = require('express');
-const {validationResult} = require('express-validator');
+const {body, validationResult} = require('express-validator');
 const fs = require('fs');
 const path = require('path');
 const { stringify } = require('querystring');
@@ -17,20 +17,44 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const productController = {
 
-    showFormCreate : (req,res) => {
-        const resultValidation = validationResult(req);
-        if(resultValidation.errors.length > 0){
-            res.render('product-create-form', {
-                errors:resultValidation.mapped(),
-                oldData:req.body
-            });
-        
-        }else{
-            res.render('product-create-form');
-        }
-
+    showFormRegister: (req,res) => {
+        return res.render('register');
     },
 
+    showFormLogin: (req,res) => {
+        return res.render('login');
+    },
+
+    processLogin : (req,res) => {
+        return 
+    }
+
+
+    showFormCreate : (req,res) => {
+        
+            res.render('product-create-form');
+        
+
+    },
+    home: (req,res) => {
+        //res.render(dataBaseProducts, { product });
+        const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        res.render('index.ejs', { products: dataBaseProducts, toThousand });
+    },
+    admin : (req, res) => {
+        if (req.session.admin) {
+            // Código normal
+        } else {
+            res.redirect('/login');
+        }
+    },
+
+    cambiarIdioma : (req, res) => {
+        const newLanguage = req.query.idioma;
+        req.session.idioma = newLanguage;
+    
+        res.redirect('index');
+    },
 
     createProduct : (req,res) => {
         
@@ -43,7 +67,7 @@ const productController = {
                 errors:resultValidation.mapped(),
                 oldData:req.body
             });
-        }else{
+        }
             
         const id = dataBaseProducts.length + 1; 
         const category = req.body.category;
@@ -76,7 +100,7 @@ const productController = {
         res.redirect('/?msg=productoCreado');
       //  res.render('../views/productoInsertado.ejs');
         //res.send("Se ha creado el producto exitadamente");
-        }
+        
 
     },
 
@@ -147,11 +171,8 @@ const productController = {
         res.render("../views/detail", { detailProduct, toThousand } );
     },
 
-    home: (req,res) => {
-        //res.render(dataBaseProducts, { product });
-        const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        res.render('index.ejs', { products: dataBaseProducts, toThousand });
-    }
+    
+
 }
 
 

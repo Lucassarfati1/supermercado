@@ -4,6 +4,10 @@ const {chek,validationResult,body} = require('express-validator');
 
 const app = express();
 
+const session = require('express-session');
+
+
+
 const path = require('path');
 
 app.set('views', path.join(__dirname, 'views'));
@@ -31,6 +35,6 @@ app.listen(8080, ()=> {
 
 app.use("/", router);
 
-
+app.use(session({secret: "frase secreta"}));
 
 //app.use(router);

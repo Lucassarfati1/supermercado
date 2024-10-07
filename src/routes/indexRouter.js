@@ -4,6 +4,7 @@ const multer= require('multer');
 const path = require('path');
 const productController = require('../controllers/productController');
 const {chek,validationResult,body} = require('express-validator');
+const session = require('express-session');
 
 
 
@@ -24,7 +25,7 @@ const upload = multer({storage});
 
 const validationsCreate = [
   body('name').notEmpty().withMessage('Tienes que ingresar un nombre'),
-  body('category').notEmpty().withMessage('Tienes que ingresar una categoria'),
+  /*body('category').notEmpty().withMessage('Tienes que ingresar una categoria'),
   body('price')
   .notEmpty().withMessage('NO PODES DEJAR ESTO VACIO LOCO').bail()
   .isNumeric().withMessage('Tienes que ingresar un numero'),
@@ -46,7 +47,7 @@ const validationsCreate = [
 
       return true;
 
-  })
+  })*/
 ]
 
 const validationsEdit = [
@@ -62,7 +63,45 @@ router.get('/', productController.home);
 router.get('/products/create', productController.showFormCreate);
 
 //Ruta para mandar formulario de crear producto -----EXPRESS VALIDATOR PARA ESTE FORM
-router.post('/products/', upload.single('img'), validationsCreate, productController.createProduct);
+//router.post('/products/',  validationsCreate, upload.single('img'),productController.createProduct);
+
+router.get('/register', productController.showFormRegister);
+
+router.get('/login', productController.showFormLogin);
+
+router.post('/login', [check('email').isEmail().withMessage('Email invalido'),
+                        check('password').isLength({min:8}).withMessage(' La contraseña es invalida')
+], productController.processLogin);
+
+router.post('/products/', validationsCreate, (req, res, next) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.render('product-create-form', {
+      errors: errors.mapped(),
+      oldData: req.body
+    });
+  }
+
+  // Si las validaciones pasan, procesamos la imagen
+  next();
+}, upload.single('img'), /*(req, res, next) => {
+  // Validar la imagen
+  if (!req.file) {
+    return res.render('product-create-form', {
+      errors: {
+        img: {
+          msg: 'Tienes que ingresar una imagen'
+        }
+      },
+      oldData: req.body
+    });
+  }
+
+  next();
+}, */ productController.createProduct);
+
+
 
 // Ruta para listar todos los productos
 router.get('/products', productController.listProducts);
