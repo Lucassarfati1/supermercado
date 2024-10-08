@@ -42,7 +42,7 @@ const productController = {
             }else{
 
             users = JSON.parse(usersJSON);
-            
+
             }
 
             for( let i = 0; i < users.length ; i++ ){
@@ -64,6 +64,8 @@ const productController = {
         }
 
         req.session.usuarioLogueado = usuarioALoggearse;
+
+        res.render('Success');
 
         }else{
             return res.render('login', { errors : errors.errors });

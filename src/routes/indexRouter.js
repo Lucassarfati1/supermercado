@@ -73,6 +73,14 @@ router.post('/login', [check('email').isEmail().withMessage('Email invalido'),
                         check('password').isLength({min:8}).withMessage(' La contraseña es invalida')
 ], productController.processLogin);
 
+router.get('/check', (req,res)=>{
+  if(req.session.usuarioLogueado == undefined) {
+    res.send('No estas loggeado');
+  }else{
+    res.send('Estas loggueado: '+req.session.usuarioLogueado.email);
+  }
+})
+
 router.post('/products/', validationsCreate, (req, res, next) => {
   const errors = validationResult(req);
 
