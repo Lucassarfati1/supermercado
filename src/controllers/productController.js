@@ -26,8 +26,49 @@ const productController = {
     },
 
     processLogin : (req,res) => {
-        return 
-    }
+        let errors = validationResult(req);
+
+        let usersJson = fs.readFileSync('users.json', { encoding: 'utf-8'});
+
+        let users;
+
+
+        if(errors.isEmpty()){
+            
+            if(users.JSON == ""){
+
+                users = [];
+
+            }else{
+
+            users = JSON.parse(usersJSON);
+            
+            }
+
+            for( let i = 0; i < users.length ; i++ ){
+
+                if(users[i].email == req.body.email){
+
+                    if(bcrypt.compareSync(req.body.passwrod, users[i].password)){
+
+                        let usuarioALoggearse = users[i];
+
+                        break;
+                    }
+                }
+            }
+
+        if(usuarioALoggearse == undefined){
+
+            return res.render('login', {errors: [{msg:"Credenciales invalidas"}]});
+        }
+
+        req.session.usuarioLogueado = usuarioALoggearse;
+
+        }else{
+            return res.render('login', { errors : errors.errors });
+        }
+    },
 
 
     showFormCreate : (req,res) => {
