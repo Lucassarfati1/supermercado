@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const multer= require('multer');
+const bcrypt = require('bcrypt');
 const path = require('path');
 const productController = require('../controllers/productController');
-const {chek,validationResult,body} = require('express-validator');
+const {check,validationResult,body} = require('express-validator');
 const session = require('express-session');
+const guestMiddleware = require('../Middlewares/AuthMiddleware');
 
 
 

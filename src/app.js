@@ -2,11 +2,19 @@ const express = require('express');
 
 const {chek,validationResult,body} = require('express-validator');
 
+const bcrypt = require('bcrypt');
+
 const app = express();
 
 const session = require('express-session');
 
-
+// Configura el middleware de sesión
+app.use(session({
+    secret: 'Lucas123', // Cambia esto por un valor seguro
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Cambia a true si estás en producción y usas HTTPS
+}));
 
 const path = require('path');
 

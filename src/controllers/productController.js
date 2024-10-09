@@ -1,8 +1,10 @@
 const express = require('express');
 const {body, validationResult} = require('express-validator');
 const fs = require('fs');
+const bcrypt = require('bcrypt');
 const path = require('path');
 const { stringify } = require('querystring');
+
 
 
 
@@ -12,8 +14,21 @@ const escribirJson = (dataBase) => {
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const dataBaseProducts = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const usersFilePath = path.join(__dirname, '../data/users.json');
+const dataBaseUsers = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+const saltRounds = 10;
+
+const hashPasswords = async () => {
+    for (let user of dataBaseUsers) {
+        user.password = await bcrypt.hash(user.password, saltRounds);
+    }
+    console.log(dataBaseUsers);
+};
+
+hashPasswords();
 
 const productController = {
 
@@ -27,31 +42,18 @@ const productController = {
 
     processLogin : (req,res) => {
         let errors = validationResult(req);
-
-        let usersJson = fs.readFileSync('users.json', { encoding: 'utf-8'});
-
-        let users;
-
-
+        console.log('Entra al metodo del controlador');
         if(errors.isEmpty()){
-            
-            if(users.JSON == ""){
+            console.log('Pasa sin errores');
+            let usuarioALoggearse;
 
-                users = [];
+            for( let i = 0; i < dataBaseUsers.length ; i++ ){
+                console.log('Esta iterando el array');
+                if(dataBaseUsers[i].email == req.body.email){
 
-            }else{
-
-            users = JSON.parse(usersJSON);
-
-            }
-
-            for( let i = 0; i < users.length ; i++ ){
-
-                if(users[i].email == req.body.email){
-
-                    if(bcrypt.compareSync(req.body.passwrod, users[i].password)){
-
-                        let usuarioALoggearse = users[i];
+                    if(bcrypt.compareSync(req.body.password, dataBaseUsers[i].password)){
+                        console.log('Encontro un usuario que coincide');
+                         usuarioALoggearse = dataBaseUsers[i];
 
                         break;
                     }
@@ -59,9 +61,11 @@ const productController = {
             }
 
         if(usuarioALoggearse == undefined){
-
+            console.log('No encontro ningun usuario que coincida.')
             return res.render('login', {errors: [{msg:"Credenciales invalidas"}]});
         }
+
+        console.log('success');
 
         req.session.usuarioLogueado = usuarioALoggearse;
 
@@ -217,6 +221,5 @@ const productController = {
     
 
 }
-
 
 module.exports = productController;
