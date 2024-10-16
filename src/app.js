@@ -6,7 +6,11 @@ const bcrypt = require('bcrypt');
 
 const app = express();
 
-const session = require('express-session');
+var cookieParser = require('cookie-parser');
+
+var rememberMiddleware = require('./Middlewares/RememberMiddleware');
+
+var session = require('express-session');
 
 // Configura el middleware de sesión
 app.use(session({
@@ -44,5 +48,9 @@ app.listen(8080, ()=> {
 app.use("/", router);
 
 app.use(session({secret: "frase secreta"}));
+
+app.use(cookieParser());
+
+app.use(rememberMiddleware);
 
 //app.use(router);

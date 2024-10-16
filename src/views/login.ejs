@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-        <form action="/login" method="POST">
+        <form class="form" action="/login" style=" background-color: white;
+        display: flex;
+        align-items: center;
+        flex-direction: column;" method="POST" >
             <label for="email">Introduzca el correo electronico</label>
-            E-mail:<input name="email" type="email">
+            E-mail:<input class="input" style=" background-color: yellow;
+    border-radius: 20%;" name="email" type="email"><br>
             <label for="password">Introduzca la contraseña</label>
-            Password:<input name="password" type="password">
+            Password:<input style=" background-color: yellow;
+    border-radius: 20%;" class="input" name="password" type="password">
+    Recordame<input type="checkbox" name="remember" style=" background-color: yellow;
+    border-radius: 20%;">
             <button type="submit" value="login">Login</button>
         </form>
 </body>

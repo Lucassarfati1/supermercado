@@ -69,6 +69,14 @@ const productController = {
 
         req.session.usuarioLogueado = usuarioALoggearse;
 
+        // implementando cookies
+
+        if(req.body.remember != undefined){
+            res.cookie('remember', usuarioALoggearse.email, {maxAge:60000});
+        }
+
+        res.cookie('lastAccess', new Date());
+
         res.render('Success');
 
         }else{
