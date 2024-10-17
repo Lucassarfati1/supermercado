@@ -54,6 +54,8 @@ const productController = {
                     if(bcrypt.compareSync(req.body.password, dataBaseUsers[i].password)){
                         console.log('Encontro un usuario que coincide');
                          usuarioALoggearse = dataBaseUsers[i];
+                         const hashPass = bcrypt.hashSync(req.body.password, 10);
+                         console.log('La password hassheada es: '+ hashPass);
 
                         break;
                     }
