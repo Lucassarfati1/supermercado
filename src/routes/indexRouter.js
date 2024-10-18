@@ -69,6 +69,8 @@ router.get('/products/create', productController.showFormCreate);
 
 router.get('/register', productController.showFormRegister);
 
+router.post('/register', productController.processRegister);
+
 router.get('/login', productController.showFormLogin);
 
 router.post('/login', [check('email').isEmail().withMessage('Email invalido'),
@@ -127,5 +129,7 @@ router.delete('/products/:id', productController.deleteProduct);
 
 // Ruta para mostrar detalles de un producto por ID
 router.get('/products/detail/:id', productController.productDetails);
+
+
 
 module.exports = router;

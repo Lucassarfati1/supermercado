@@ -36,6 +36,28 @@ const productController = {
         return res.render('register');
     },
 
+    processRegister: (req,res) => {
+
+        let errors = validationResult(req);
+        console.log('Entra al metodo del controlador');
+        if(errors.isEmpty()){
+            console.log('Pasa sin errores');
+
+
+            for( let i = 0; i < dataBaseUsers.length ; i++ ){
+                console.log('Esta iterando el array');
+                if(dataBaseUsers[i].email == req.body.email){
+                    return res.render('register', {errors: [{msg:"Email ya registrado"}]});
+                }
+            }
+        let user = {
+            email: req.body.email,
+            password: req.body.password
+        };
+        dataBaseUsers.push(user);
+        
+    }},
+
     showFormLogin: (req,res) => {
         return res.render('login');
     },
