@@ -113,6 +113,9 @@ router.post('/products/', validationsCreate, (req, res, next) => {
   next();
 }, */ productController.createProduct);
 
+// Ruta para listar a los usuarios
+
+router.get('users', productController.listUsers);
 
 
 // Ruta para listar todos los productos

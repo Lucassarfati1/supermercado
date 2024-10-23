@@ -4,7 +4,7 @@ const fs = require('fs');
 const bcrypt = require('bcrypt');
 const path = require('path');
 const { stringify } = require('querystring');
-
+let db = require('../models');
 
 
 
@@ -32,6 +32,14 @@ hashPasswords();
 
 const productController = {
 
+    listUsers: (req,res) => {
+        //const user = db.models.User;
+        db.Users.findAll()
+        .then(function(users){
+         return res.render("listUsers", { users : users });
+     })
+    },
+
     showFormRegister: (req,res) => {
         return res.render('register');
     },
@@ -39,22 +47,46 @@ const productController = {
     processRegister: (req,res) => {
 
         let errors = validationResult(req);
+
         console.log('Entra al metodo del controlador');
+        
         if(errors.isEmpty()){
+
             console.log('Pasa sin errores');
 
 
             for( let i = 0; i < dataBaseUsers.length ; i++ ){
+
                 console.log('Esta iterando el array');
+
                 if(dataBaseUsers[i].email == req.body.email){
+
                     return res.render('register', {errors: [{msg:"Email ya registrado"}]});
+
                 }
             }
-        let user = {
-            email: req.body.email,
-            password: req.body.password
+            const email = req.body.email;
+
+            const password = req.body.password;
+
+            const user = {
+
+            "email": email,
+
+            "password": password
         };
+
+        console.log(user);
+
         dataBaseUsers.push(user);
+
+        console.log(dataBaseUsers);
+
+        // Sobreescribes el archivo JSON con los datos actualizados
+
+        fs.writeFileSync(usersFilePath, JSON.stringify(dataBaseUsers, null, 2));
+
+        return res.redirect('/login');
         
     }},
 
@@ -184,8 +216,7 @@ const productController = {
     },
 
     listProducts : (req,res) => {
-       
-       // res.render('BaseDatosEjs', {dataBaseProducts});
+       // res.render('BaseDatosEjs', {dataBaseProducts})
       res.render("products", {products : dataBaseProducts, toThousand});
     },
 

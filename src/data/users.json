@@ -1,62 +1,66 @@
 [
-    {
-      "email": "lucas.martinez@gmail.com",
-      "password": "lucasPass2024"
-    },
-    {
-      "email": "sofia_garcia@hotmail.com",
-      "password": "sofiaSecure99"
-    },
-    {
-      "email": "martin.lopez@gmail.com",
-      "password": "ml_password89"
-    },
-    {
-      "email": "carla.fernandez@hotmail.com",
-      "password": "carlaF_1234"
-    },
-    {
-      "email": "diego.rivera@gmail.com",
-      "password": "diegor_2023"
-    },
-    {
-      "email": "valentina.perez@hotmail.com",
-      "password": "valenPerez!77"
-    },
-    {
-      "email": "maria_rodriguez@gmail.com",
-      "password": "mariaRodri_84"
-    },
-    {
-      "email": "sebastian.sosa@hotmail.com",
-      "password": "sebaSosa2022"
-    },
-    {
-      "email": "nicolas.mendez@gmail.com",
-      "password": "nMendez_pass1"
-    },
-    {
-      "email": "florencia_gomez@hotmail.com",
-      "password": "FlorGomez2023"
-    },
-    {
-      "email": "juan.cruz@gmail.com",
-      "password": "juanCruz!456"
-    },
-    {
-      "email": "daniela_molina@hotmail.com",
-      "password": "daniMol!89"
-    },
-    {
-      "email": "andres.vazquez@gmail.com",
-      "password": "andresv123"
-    },
-    {
-      "email": "camila.rios@hotmail.com",
-      "password": "camilaRios_pass"
-    },
-    {
-      "email": "fernando.alvarez@gmail.com",
-      "password": "fernandoA_2024"
-    }
-  ]
+  {
+    "email": "lucas.martinez@gmail.com",
+    "password": "$2b$10$hUMC4bhJrIE/MQGfIC/vZOYVRGn9JoywNDpNvtiIdcKCK3TemazAW"
+  },
+  {
+    "email": "sofia_garcia@hotmail.com",
+    "password": "$2b$10$0QISbwUO5a4E7cj9yYePuO4KOrh2P.jSHqHRVllbffNesJkC/pjnW"
+  },
+  {
+    "email": "martin.lopez@gmail.com",
+    "password": "$2b$10$TD5J9EXA7PcmZeZU5rkXMeolmwVpvI1dQZSU1Hn0e41JVNtGYM5ru"
+  },
+  {
+    "email": "carla.fernandez@hotmail.com",
+    "password": "$2b$10$oRnN5hPrHiBY3gAs/M34tebmFWWYBY6SScxaBoXj8RqOEiC6p1ptG"
+  },
+  {
+    "email": "diego.rivera@gmail.com",
+    "password": "$2b$10$jWhDqKwRD5im7vV/NJGlmu7VUnkYDs6aZLgQWzUAHDbk31luaLDqC"
+  },
+  {
+    "email": "valentina.perez@hotmail.com",
+    "password": "$2b$10$QOct9LJsw2YiD/vsOaohHuLFTQ5NyIUoeZusJ.7pKWn7w1vkYZWXC"
+  },
+  {
+    "email": "maria_rodriguez@gmail.com",
+    "password": "$2b$10$MYkhs/VO6aeEJ2whs/M9lunL54U3xFLbtfH.0Rd1bWqbwoY1vgVJS"
+  },
+  {
+    "email": "sebastian.sosa@hotmail.com",
+    "password": "$2b$10$4DgBa5BrBHWgYEhFOrEC7OOZ.bhhhV/3aFrHuyCndybfqpuI5u3Ve"
+  },
+  {
+    "email": "nicolas.mendez@gmail.com",
+    "password": "$2b$10$LDU5UM8ww15IvvSTV047XeU3z8H6u/HHDwgFiP5Wq9iK9ebjjDcJm"
+  },
+  {
+    "email": "florencia_gomez@hotmail.com",
+    "password": "$2b$10$0XdzVZO1fcz7vHxnvo0X6OjXy22Rz8EKLvVfS9tw3.ErxpBcNM966"
+  },
+  {
+    "email": "juan.cruz@gmail.com",
+    "password": "$2b$10$Z.bP7HBY09OYllxOiUt72uAdzNA18cNhCH7/Vav.C6oAW.JU5fjG2"
+  },
+  {
+    "email": "daniela_molina@hotmail.com",
+    "password": "$2b$10$7jMgsRkhOjehx.07Sgdzx.H3bw4rLQ/pQNNlWlqghsbtBFPS/zYqi"
+  },
+  {
+    "email": "andres.vazquez@gmail.com",
+    "password": "$2b$10$YEEiHtXJ.ovECi7UI0.GYubvS6TJX2wrEF/BY6R4wK6qk9htVgXgm"
+  },
+  {
+    "email": "camila.rios@hotmail.com",
+    "password": "$2b$10$jJFiN6K8nFhm/XC6kzXuROwtE3a21.nLWBF/RPt8BJmsk7IutuEoa"
+  },
+  {
+    "email": "fernando.alvarez@gmail.com",
+    "password": "$2b$10$2HFqUwOszLuGVPNz.bYs1er3588D1ZAwng5m0rgQkUjD3bj1dOffu"
+  },
+  {
+    "email": "lucas131@gmail.com",
+    "password": "peloconcha"
+  }
+]
